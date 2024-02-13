@@ -20,9 +20,9 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.3.5)(tailwindcss@3.4.1)
-  '@fontsource/atkinson-hyperlegible':
-    specifier: ^5.0.18
-    version: 5.0.18
+  '@fontsource-variable/anybody':
+    specifier: ^5.0.19
+    version: 5.0.19
   '@fontsource/bubblegum-sans':
     specifier: ^5.0.18
     version: 5.0.18
@@ -720,8 +720,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/atkinson-hyperlegible@5.0.18:
-    resolution: {integrity: sha512-94htZ6Q0UQVEEzbSy/IEmRuGH06Y4Qv+xZJHfCQrc2QCdcHxtdqw6tUXwLyCfiPqtI5oomsh2Un7Pnls4o4NRA==}
+  /@fontsource-variable/anybody@5.0.19:
+    resolution: {integrity: sha512-eblCvmc9h73AX8EiHpq+MCpcXaMcRfnce+AaKLwhXr6EBcbIucj4jqN5PymJ+rx+oiIJpLpj9GeYCRj7FhCdEg==}
     dev: false
 
   /@fontsource/bubblegum-sans@5.0.18:

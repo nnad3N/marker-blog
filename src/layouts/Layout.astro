@@ -1,0 +1,66 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+import "@fontsource-variable/anybody";
+
+export type BaseHeadProps = {
+  title?: string;
+  description?: string;
+  image?: string;
+};
+
+type Props = {
+  class?: string;
+} & BaseHeadProps;
+
+const { class: className } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pl">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style is:global>
+      .mark {
+        margin: 0 -0.4em;
+        padding: 0.1em 0.4em;
+        border-radius: 0.8em 0.3em;
+        background: transparent;
+        background-image: linear-gradient(
+          to right,
+          rgba(255, 225, 0, 0.15),
+          rgba(255, 225, 0, 0.6) 10%,
+          rgba(255, 225, 0, 0.1)
+        );
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+      }
+
+      .squiggle {
+        filter: url(#squiggle);
+      }
+    </style>
+  </head>
+  <body class="text-gray-900">
+    <Navigation />
+    <main class={className}>
+      <slot />
+    </main>
+    <Footer />
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="0" width="0">
+      <defs>
+        <filter id="squiggle">
+          <feTurbulence
+            type="fractalNoise"
+            id="turbulence"
+            baseFrequency=".04"
+            numOctaves="3"></feTurbulence>
+          <feDisplacementMap id="displacement" in="SourceGraphic" scale="4"
+          ></feDisplacementMap>
+        </filter>
+      </defs>
+    </svg>
+  </body>
+</html>

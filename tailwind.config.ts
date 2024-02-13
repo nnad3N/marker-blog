@@ -5,7 +5,7 @@ export default {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}"],
   theme: {
     fontFamily: {
-      display: ["Bubblegum"],
+      display: ["Anybody Variable"],
     },
     extend: {
       fontFamily: {
