@@ -2,10 +2,8 @@
 import { SITE_TITLE } from "../consts";
 ---
 
-<header>
-  <nav
-    class="mx-auto flex h-14 items-center justify-between px-5 xl:max-w-6xl xl:px-0"
-  >
+<header class="relative px-5 lg:px-8 2xl:px-0">
+  <nav class="mx-auto flex h-14 max-w-7xl items-center justify-between">
     <a class="font-bold hover:bg-yellow-200 md:text-lg" href="/">{SITE_TITLE}</a
     >
     <a class="hover:bg-yellow-200" href="/search">
@@ -23,5 +21,6 @@ import { SITE_TITLE } from "../consts";
       ></a
     >
   </nav>
-  <div class="squiggle w-full border-b-2 border-black"></div>
+  <div class="squiggle absolute bottom-0 left-0 w-full border-b-2 border-black">
+  </div>
 </header>

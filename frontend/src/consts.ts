@@ -3,3 +3,4 @@
 
 export const SITE_TITLE = "Zakreślacz";
 export const SITE_DESCRIPTION = "Welcome to my website!";
+export const CMS_URL = import.meta.env.CMS_URL;

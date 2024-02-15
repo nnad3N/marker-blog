@@ -1,7 +1,7 @@
 import type { Block } from "payload/types";
 
 export const DisplayPosts: Block = {
-  slug: "display-posts",
+  slug: "displayPosts",
   labels: {
     singular: "Display Posts",
     plural: "Display Posts",

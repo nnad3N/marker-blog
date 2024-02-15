@@ -44,11 +44,10 @@ export interface User {
 export interface Page {
   id: string;
   title: string;
-  publishedAt?: string | null;
   content: (
     | {
         title: string;
-        subtitle?: string | null;
+        text?: string | null;
         id?: string | null;
         blockName?: string | null;
         blockType: 'header';
@@ -74,10 +73,19 @@ export interface Page {
         blockName?: string | null;
         blockType: 'cta';
       }
+    | {
+        orderBy: 'desc' | 'asc';
+        style: 'full' | 'compact';
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'displayPosts';
+      }
   )[];
-  slug?: string | null;
+  publishedAt: string;
+  slug: string;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -87,7 +95,6 @@ export interface Post {
   id: string;
   title: string;
   image: string | Media;
-  publishedAt?: string | null;
   content: {
     root: {
       children: {
@@ -103,9 +110,11 @@ export interface Post {
     };
     [k: string]: unknown;
   };
-  slug?: string | null;
+  publishedAt: string;
+  slug: string;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -131,7 +140,7 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
-    card?: {
+    content?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;

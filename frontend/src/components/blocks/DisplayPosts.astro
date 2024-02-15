@@ -1,0 +1,30 @@
+---
+import type { Block, PayloadResponse } from "@/types/payload";
+import PostComponent from "@/components/Post.astro";
+import PostsWrapper from "@/components/PostsWrapper.astro";
+import { CMS_URL } from "@/consts";
+import type { Post } from "payload/generated-types";
+
+interface Props {
+  block: Block<"displayPosts">;
+}
+
+const { block } = Astro.props;
+
+const isDescending = block.orderBy === "desc";
+
+const data = (await fetch(
+  `${CMS_URL}/api/posts?sort=${isDescending ? "-" : ""}publishedAt`,
+).then((res) => res.json())) as PayloadResponse<Post>;
+console.log(data);
+---
+
+<PostsWrapper>
+  {
+    // It's easier to make typescript work this way
+    data?.docs.map((post) => {
+      if (typeof post === "string") return null;
+      return <PostComponent post={post} />;
+    })
+  }
+</PostsWrapper>

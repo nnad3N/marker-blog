@@ -1,23 +1,31 @@
 ---
-import { Image } from "astro:assets";
-import PlaceholderImage from "@/assets/blog-placeholder-1.jpg";
+import type { Block } from "@/types/payload";
+import PayloadImage from "@/components/PayloadImage.astro";
+import FormattedDate from "@/components/FormattedDate.astro";
+
+interface Props {
+  post: Exclude<Block<"featuredPosts">["featuredPosts"][number], string>;
+}
+
+const { post } = Astro.props;
 ---
 
 <a
-  href="/posts/post1"
-  class="flex flex-1 basis-96 flex-col overflow-hidden rounded-xl shadow-lg transition-all duration-100 hover:-translate-y-2 hover:shadow-xl"
+  href={`/posts/${post.slug}`}
+  class="flex flex-1 basis-[26rem] flex-col overflow-hidden rounded-xl shadow-lg transition-all duration-100 hover:-translate-y-2 hover:shadow-xl"
 >
-  <Image
-    class="squiggle aspect-[2/1] w-full object-cover"
-    src={PlaceholderImage}
-    alt=""
-    widths={[640, 1280, PlaceholderImage.width]}
-    sizes="(min-width: 1280px) and (max-width: 1920px) 640px, 1280px"
-  />
+  {
+    typeof post.image !== "string" ? (
+      <PayloadImage image={post.image} />
+    ) : (
+      <div class="aspect-[2/1] animate-pulse bg-gray-300" />
+    )
+  }
   <div class="flex flex-1 flex-col justify-between gap-y-1.5 px-6 py-4">
     <h3 class="text-lg font-bold md:text-xl">
-      Introducing Astro: Ship Less JavaScript
+      {post.title}
     </h3>
-    <span class="mt-auto text-sm">06-08-2021</span>
+    <!-- <FormattedDate class="mt-auto text-sm" date={new Date(post.publishedAt)} /> -->
+    <span class="mt-auto text-sm">{post.publishedAt}</span>
   </div>
 </a>

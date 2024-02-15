@@ -1,0 +1,20 @@
+---
+import type { Block } from "@/types/payload";
+
+interface Props {
+  block: Block<"header">;
+}
+
+const {
+  block: { title, text },
+} = Astro.props;
+---
+
+<>
+  <h1
+    class="font-display text-[clamp(2.9rem,6vw,6rem)] font-black uppercase leading-none"
+  >
+    {title}
+  </h1>
+  {text && <h2 class="mt-2 md:mt-4 md:text-lg lg:text-xl">{text}</h2>}
+</>

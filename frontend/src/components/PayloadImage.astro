@@ -1,0 +1,25 @@
+---
+import { CMS_URL } from "@/consts";
+import type { Media } from "payload/generated-types";
+
+interface Props {
+  image: Media;
+}
+
+const { image } = Astro.props;
+
+const src = CMS_URL + image.url;
+
+const sizes = Object.values(image.sizes ?? {}).map(
+  (image) => `${CMS_URL + image.url} ${image.width}w`,
+);
+const srcset = sizes.join(", ");
+---
+
+<img
+  class="squiggle aspect-[2/1] w-full object-cover"
+  src={src}
+  srcset={srcset}
+  sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, 1280px"
+  alt={image.alt}
+/>

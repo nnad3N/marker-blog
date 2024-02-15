@@ -1,0 +1,29 @@
+---
+import type { Blocks, BlockType } from "@/types/payload";
+import Header from "@/components/blocks/Header.astro";
+import CTA from "@/components/blocks/CTA.astro";
+import FeaturedPosts from "@/components/blocks/FeaturedPosts.astro";
+import DisplayPosts from "@/components/blocks/DisplayPosts.astro";
+
+interface Props {
+  blocks: Blocks;
+}
+
+const { blocks } = Astro.props;
+
+const components: Record<BlockType, any> = {
+  header: Header,
+  cta: CTA,
+  featuredPosts: FeaturedPosts,
+  displayPosts: DisplayPosts,
+};
+---
+
+<>
+  {
+    blocks.map((block) => {
+      const Block = components[block.blockType as BlockType];
+      return <Block block={block} />;
+    })
+  }
+</>

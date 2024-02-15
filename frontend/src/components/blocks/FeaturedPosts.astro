@@ -1,0 +1,21 @@
+---
+import type { Block } from "@/types/payload";
+import Post from "@/components/Post.astro";
+import PostsWrapper from "@/components/PostsWrapper.astro";
+
+interface Props {
+  block: Block<"featuredPosts">;
+}
+
+const { block } = Astro.props;
+---
+
+<PostsWrapper class="2xl:max-w-none">
+  {
+    // It's easier to make typescript work this way
+    block.featuredPosts.map((post) => {
+      if (typeof post === "string") return null;
+      return <Post post={post} />;
+    })
+  }
+</PostsWrapper>

@@ -1,0 +1,33 @@
+---
+import type { Block } from "@/types/payload";
+import ArrowRight from "@/components/ArrowRight.astro";
+
+interface Props {
+  block: Block<"cta">;
+}
+
+const {
+  block: { link },
+} = Astro.props;
+
+const pageSlug =
+  typeof link.reference?.value !== "string"
+    ? link.reference?.value.slug
+    : undefined;
+
+const href =
+  link.type === "custom"
+    ? link.url
+    : `/${!pageSlug || pageSlug === "home" ? "" : pageSlug}`;
+---
+
+<a
+  class="group flex cursor-pointer items-center gap-x-1 text-xl font-bold"
+  href={href}
+  target={link.newTab ? "_blank" : "_self"}
+>
+  {link.label}
+  <ArrowRight
+    class="squiggle transition-transform duration-100 group-hover:translate-x-2"
+  />
+</a>
