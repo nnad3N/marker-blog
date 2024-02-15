@@ -9,11 +9,11 @@ const Users: CollectionConfig = {
     useAsTitle: "email",
   },
   access: {
-    read: adminOrEditor,
+    read: admin,
     create: admin,
     update: admin,
     delete: admin,
-    admin: admin,
+    admin: adminOrEditor,
   },
   fields: [
     {

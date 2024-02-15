@@ -1,19 +1,19 @@
 import path from "path";
-
-import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { buildConfig } from "payload/config";
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import Users from "./collections/Users";
 import Pages from "./collections/Pages";
 import Posts from "./collections/Posts";
 import Media from "./collections/Media";
 import Settings from "./globals/settings";
+import { webpackBundler } from "@payloadcms/bundler-webpack";
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
+    css: path.resolve(__dirname, "./styles/overrides.scss"),
   },
   editor: lexicalEditor({}),
   collections: [Users, Pages, Posts, Media],

@@ -14,26 +14,32 @@ const Media: CollectionConfig = {
         name: "thumbnail",
         width: 640,
         height: 320,
-        position: "centre",
+        withoutEnlargement: false,
+        formatOptions: {
+          format: "webp",
+        },
       },
       {
-        name: "card",
+        name: "content",
         width: 768,
         height: 384,
-        position: "centre",
+        withoutEnlargement: false,
+        formatOptions: {
+          format: "webp",
+        },
       },
       {
         name: "desktop",
-        width: 1200,
-        height: 600,
-        position: "centre",
+        width: 1280,
+        height: 640,
+        withoutEnlargement: false,
+        formatOptions: {
+          format: "webp",
+        },
       },
     ],
     adminThumbnail: "thumbnail",
     mimeTypes: ["image/*"],
-    resizeOptions: {
-      withoutEnlargement: false,
-    },
     formatOptions: {
       format: "webp",
     },

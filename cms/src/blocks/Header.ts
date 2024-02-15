@@ -13,7 +13,7 @@ export const Header: Block = {
       required: true,
     },
     {
-      name: "subtitle",
+      name: "text",
       type: "text",
     },
   ],

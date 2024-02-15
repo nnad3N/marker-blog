@@ -11,6 +11,7 @@ export const DisplayPosts: Block = {
       type: "select",
       name: "orderBy",
       label: "Order By",
+      required: true,
       options: [
         {
           label: "Newest",
@@ -22,6 +23,22 @@ export const DisplayPosts: Block = {
         },
       ],
       defaultValue: "desc",
+    },
+    {
+      type: "select",
+      name: "style",
+      required: true,
+      options: [
+        {
+          label: "Full",
+          value: "full",
+        },
+        {
+          label: "Compact",
+          value: "compact",
+        },
+      ],
+      defaultValue: "full",
     },
   ],
 };

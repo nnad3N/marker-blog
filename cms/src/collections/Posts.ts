@@ -1,8 +1,8 @@
 import type { CollectionConfig } from "payload/types";
 
 import { slugField } from "../fields/slug";
-import { populatePublishedAt } from "../hooks/populatePublishedAt";
-import { admin, adminOrEditor, adminOrEditorOrPublished } from "./Users/access";
+import { adminOrEditor, adminOrEditorOrPublished } from "./Users/access";
+import { publishedAtField } from "../fields/publishedAt";
 
 const Posts: CollectionConfig = {
   slug: "posts",
@@ -10,14 +10,15 @@ const Posts: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["title", "slug", "updatedAt"],
   },
-  hooks: {
-    beforeChange: [populatePublishedAt],
-  },
   access: {
     read: adminOrEditorOrPublished,
     update: adminOrEditor,
-    create: admin,
-    delete: admin,
+    create: adminOrEditor,
+    delete: adminOrEditor,
+  },
+  versions: {
+    drafts: true,
+    maxPerDoc: 10,
   },
   fields: [
     {
@@ -32,17 +33,11 @@ const Posts: CollectionConfig = {
       required: true,
     },
     {
-      name: "publishedAt",
-      type: "date",
-      admin: {
-        position: "sidebar",
-      },
-    },
-    {
       name: "content",
       type: "richText",
       required: true,
     },
+    publishedAtField(),
     slugField(),
   ],
 };
