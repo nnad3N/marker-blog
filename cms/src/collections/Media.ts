@@ -1,8 +1,12 @@
 import path from "path";
 import type { CollectionConfig } from "payload/types";
+import { anyone } from "./Users/access";
 
 const Media: CollectionConfig = {
   slug: "media",
+  access: {
+    read: anyone,
+  },
   upload: {
     staticDir: path.resolve(__dirname, "../../../media"),
     imageSizes: [

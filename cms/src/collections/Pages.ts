@@ -1,12 +1,11 @@
 import type { CollectionConfig } from "payload/types";
 
-// import { admins } from "../../access/admins";
-// import { adminsOrPublished } from "../../access/adminsOrPublished";
 import { slugField } from "../fields/slug";
 import { Header } from "../blocks/Header";
 import { CallToAction } from "../blocks/CallToAction";
 import { populatePublishedAt } from "../hooks/populatePublishedAt";
 import { FeaturedPosts } from "../blocks/FeaturedPosts";
+import { admin, adminOrEditor, adminOrEditorOrPublished } from "./Users/access";
 
 const Pages: CollectionConfig = {
   slug: "pages",
@@ -16,14 +15,13 @@ const Pages: CollectionConfig = {
   },
   hooks: {
     beforeChange: [populatePublishedAt],
-    // afterRead: [populateArchiveBlock],
   },
-  //   access: {
-  //     read: adminsOrPublished,
-  //     update: admins,
-  //     create: admins,
-  //     delete: admins,
-  //   },
+  access: {
+    read: adminOrEditorOrPublished,
+    update: adminOrEditor,
+    create: admin,
+    delete: admin,
+  },
   fields: [
     {
       name: "title",

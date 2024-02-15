@@ -1,9 +1,8 @@
 import type { CollectionConfig } from "payload/types";
 
-// import { admins } from "../../access/admins";
-// import { adminsOrPublished } from "../../access/adminsOrPublished";
 import { slugField } from "../fields/slug";
 import { populatePublishedAt } from "../hooks/populatePublishedAt";
+import { admin, adminOrEditor, adminOrEditorOrPublished } from "./Users/access";
 
 const Posts: CollectionConfig = {
   slug: "posts",
@@ -14,12 +13,12 @@ const Posts: CollectionConfig = {
   hooks: {
     beforeChange: [populatePublishedAt],
   },
-  //   access: {
-  //     read: adminsOrPublished,
-  //     update: admins,
-  //     create: admins,
-  //     delete: admins,
-  //   },
+  access: {
+    read: adminOrEditorOrPublished,
+    update: adminOrEditor,
+    create: admin,
+    delete: admin,
+  },
   fields: [
     {
       name: "title",

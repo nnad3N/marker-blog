@@ -1,7 +1,12 @@
 import type { GlobalConfig } from "payload/types";
+import { adminOrEditor, anyone } from "../collections/Users/access";
 
 const Settings: GlobalConfig = {
   slug: "settings",
+  access: {
+    read: anyone,
+    update: adminOrEditor,
+  },
   fields: [
     {
       name: "websiteTitle",
