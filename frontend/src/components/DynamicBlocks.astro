@@ -22,7 +22,8 @@ const components: Record<BlockType, any> = {
 <>
   {
     blocks.map((block) => {
-      const Block = components[block.blockType as BlockType];
+      const Block = components[block.blockType];
+      if (!Block) return null;
       return <Block block={block} />;
     })
   }

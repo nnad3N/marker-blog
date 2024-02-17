@@ -1,7 +1,7 @@
 import path from "path";
 import { buildConfig } from "payload/config";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { HTMLConverterFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
 import Users from "./collections/Users";
 import Pages from "./collections/Pages";
 import Posts from "./collections/Posts";
@@ -15,7 +15,9 @@ export default buildConfig({
     bundler: webpackBundler(),
     css: path.resolve(__dirname, "./styles/overrides.scss"),
   },
-  editor: lexicalEditor({}),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
+  }),
   collections: [Users, Pages, Posts, Media],
   globals: [Settings],
   typescript: {

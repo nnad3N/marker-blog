@@ -14,18 +14,11 @@ const { post } = Astro.props;
   href={`/posts/${post.slug}`}
   class="flex flex-1 basis-[26rem] flex-col overflow-hidden rounded-xl shadow-lg transition-all duration-100 hover:-translate-y-2 hover:shadow-xl"
 >
-  {
-    typeof post.image !== "string" ? (
-      <PayloadImage image={post.image} />
-    ) : (
-      <div class="aspect-[2/1] animate-pulse bg-gray-300" />
-    )
-  }
+  <PayloadImage class="squiggle" image={post.image} />
   <div class="flex flex-1 flex-col justify-between gap-y-1.5 px-6 py-4">
     <h3 class="text-lg font-bold md:text-xl">
       {post.title}
     </h3>
-    <!-- <FormattedDate class="mt-auto text-sm" date={new Date(post.publishedAt)} /> -->
-    <span class="mt-auto text-sm">{post.publishedAt}</span>
+    <FormattedDate class="mt-auto text-sm" date={new Date(post.publishedAt)} />
   </div>
 </a>

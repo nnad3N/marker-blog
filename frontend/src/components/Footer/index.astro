@@ -1,0 +1,21 @@
+---
+import Social from "@/components/Footer/Social.astro";
+import type { Socials } from "@/types/payload";
+
+const today = new Date();
+
+interface Props {
+  websiteTitle: string;
+  socials: Socials;
+}
+
+const { websiteTitle, socials } = Astro.props;
+---
+
+<footer class="flex flex-col items-center justify-center gap-y-4 py-6 lg:py-8">
+  &copy;{today.getFullYear()}
+  {websiteTitle}
+  <div class="flex gap-x-3">
+    {socials.map((social) => <Social social={social} />)}
+  </div>
+</footer>

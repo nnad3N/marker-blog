@@ -1,6 +1,2 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
-
-export const SITE_TITLE = "Zakreślacz";
-export const SITE_DESCRIPTION = "Welcome to my website!";
 export const CMS_URL = import.meta.env.CMS_URL;
+export const MEDIA_URL = import.meta.env.MEDIA_URL;

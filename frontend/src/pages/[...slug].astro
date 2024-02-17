@@ -1,33 +1,29 @@
 ---
-import { getPages } from "@/data/payload";
+import { payloadFetch } from "@/data/payload";
 
 import DynamicBlocks from "@/components/DynamicBlocks.astro";
 import Layout from "@/layouts/Layout.astro";
 import type { Page } from "payload/generated-types";
-import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-
-// const res = await fetch(
-//   "http://localhost:3000/api/pages/65ce3ac1911eb45e67aa02c9?locale=undefined&draft=false&depth=2",
-// );
-// const page = (await res.json()) as Page;
+import type { GetStaticPaths } from "astro";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await getPages();
-  return (
-    data?.docs.map(({ slug, content }) => ({
-      params: { slug: slug || undefined },
-      props: { content },
-    })) ?? []
-  );
+  const data = await payloadFetch<Page[]>("pages?depth=2");
+
+  if (!data) return [];
+
+  return data.docs.map(({ slug, content }) => ({
+    params: { slug: slug || undefined },
+    props: { content },
+  }));
 };
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+type Props = {
+  content: Page["content"];
+};
 
 const { content } = Astro.props;
 ---
 
-<Layout
-  class="flex min-h-[calc(100vh-3.5rem)] flex-col items-center px-5 py-12 lg:px-8 lg:py-24"
->
+<Layout class="py-12 lg:py-24">
   <DynamicBlocks blocks={content} />
 </Layout>

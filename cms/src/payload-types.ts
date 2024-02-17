@@ -75,14 +75,13 @@ export interface Page {
       }
     | {
         orderBy: 'desc' | 'asc';
-        style: 'full' | 'compact';
         id?: string | null;
         blockName?: string | null;
         blockType: 'displayPosts';
       }
   )[];
   publishedAt: string;
-  slug: string;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -110,6 +109,7 @@ export interface Post {
     };
     [k: string]: unknown;
   };
+  content_html?: string | null;
   publishedAt: string;
   slug: string;
   updatedAt: string;
@@ -198,8 +198,8 @@ export interface PayloadMigration {
  */
 export interface Setting {
   id: string;
-  websiteTitle?: string | null;
-  websiteDescription?: string | null;
+  websiteTitle: string;
+  websiteDescription: string;
   socials?:
     | {
         url: string;

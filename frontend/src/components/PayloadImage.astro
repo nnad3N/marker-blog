@@ -1,25 +1,35 @@
 ---
-import { CMS_URL } from "@/consts";
+import { MEDIA_URL } from "@/consts";
 import type { Media } from "payload/generated-types";
 
 interface Props {
-  image: Media;
+  image: Media | string;
+  class?: string;
 }
 
-const { image } = Astro.props;
+const { image, class: className } = Astro.props;
+const isImage = typeof image !== "string";
 
-const src = CMS_URL + image.url;
-
-const sizes = Object.values(image.sizes ?? {}).map(
-  (image) => `${CMS_URL + image.url} ${image.width}w`,
-);
+const sizes = isImage
+  ? Object.values(image.sizes ?? {}).map(
+      (image) => `${MEDIA_URL + image.url} ${image.width}w`,
+    )
+  : [];
 const srcset = sizes.join(", ");
 ---
 
-<img
-  class="squiggle aspect-[2/1] w-full object-cover"
-  src={src}
-  srcset={srcset}
-  sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, 1280px"
-  alt={image.alt}
-/>
+{
+  typeof image !== "string" ? (
+    <img
+      class:list={["aspect-[2/1] w-full object-cover", className]}
+      src={MEDIA_URL + image.url}
+      srcset={srcset}
+      sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, 1280px"
+      alt={image.alt}
+    />
+  ) : (
+    <div
+      class:list={["aspect-[2/1] w-full animate-pulse bg-gray-300", className]}
+    />
+  )
+}

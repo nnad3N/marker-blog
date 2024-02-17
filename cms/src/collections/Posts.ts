@@ -3,6 +3,7 @@ import type { CollectionConfig } from "payload/types";
 import { slugField } from "../fields/slug";
 import { adminOrEditor, adminOrEditorOrPublished } from "./Users/access";
 import { publishedAtField } from "../fields/publishedAt";
+import { lexicalHTML } from "@payloadcms/richtext-lexical";
 
 const Posts: CollectionConfig = {
   slug: "posts",
@@ -37,8 +38,11 @@ const Posts: CollectionConfig = {
       type: "richText",
       required: true,
     },
+    lexicalHTML("content", { name: "content_html" }),
     publishedAtField(),
-    slugField(),
+    slugField(undefined, {
+      required: true,
+    }),
   ],
 };
 

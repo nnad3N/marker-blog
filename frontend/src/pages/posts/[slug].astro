@@ -1,0 +1,30 @@
+---
+import { payloadFetch } from "@/data/payload";
+import BlogPost from "@/layouts/BlogPost.astro";
+import Layout from "@/layouts/Layout.astro";
+import type { GetStaticPaths } from "astro";
+import type { Post } from "payload/generated-types";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const data = await payloadFetch<Post[]>("posts");
+
+  if (!data) return [];
+
+  return data.docs.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+};
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+
+const ogImage = typeof post.image === "string" ? undefined : post.image;
+---
+
+<Layout class="py-8 lg:py-16" title={post.title} ogImage={ogImage}>
+  <BlogPost {...post} />
+</Layout>

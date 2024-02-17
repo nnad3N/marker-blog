@@ -24,21 +24,5 @@ export const DisplayPosts: Block = {
       ],
       defaultValue: "desc",
     },
-    {
-      type: "select",
-      name: "style",
-      required: true,
-      options: [
-        {
-          label: "Full",
-          value: "full",
-        },
-        {
-          label: "Compact",
-          value: "compact",
-        },
-      ],
-      defaultValue: "full",
-    },
   ],
 };

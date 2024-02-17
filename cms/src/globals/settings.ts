@@ -12,11 +12,13 @@ const Settings: GlobalConfig = {
       name: "websiteTitle",
       label: "Website Title",
       type: "text",
+      required: true,
     },
     {
       name: "websiteDescription",
       label: "Website Description",
       type: "textarea",
+      required: true,
     },
     {
       type: "array",

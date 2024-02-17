@@ -1,9 +1,9 @@
 ---
-import type { Block, PayloadResponse } from "@/types/payload";
+import type { Block } from "@/types/payload";
 import PostComponent from "@/components/Post.astro";
 import PostsWrapper from "@/components/PostsWrapper.astro";
-import { CMS_URL } from "@/consts";
 import type { Post } from "payload/generated-types";
+import { payloadFetch } from "@/data/payload";
 
 interface Props {
   block: Block<"displayPosts">;
@@ -13,10 +13,9 @@ const { block } = Astro.props;
 
 const isDescending = block.orderBy === "desc";
 
-const data = (await fetch(
-  `${CMS_URL}/api/posts?sort=${isDescending ? "-" : ""}publishedAt`,
-).then((res) => res.json())) as PayloadResponse<Post>;
-console.log(data);
+const data = await payloadFetch<Post[]>(
+  `posts?sort=${isDescending ? "-" : ""}publishedAt`,
+);
 ---
 
 <PostsWrapper>
