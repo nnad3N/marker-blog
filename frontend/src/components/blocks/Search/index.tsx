@@ -26,10 +26,6 @@ interface Props {
   searchData: SearchItem[];
 }
 
-const DOMPurifyConfig = {
-  USE_PROFILES: { html: true, svg: true },
-};
-
 const Search: Component<Props> = ({ block, searchData }) => {
   const fuse = new Fuse(searchData, {
     keys: ["title", "description"],
@@ -43,11 +39,8 @@ const Search: Component<Props> = ({ block, searchData }) => {
 
   onMount(() => {
     const searchParams = new URLSearchParams(window.location.search);
-    const urlQuery = DOMPurify.sanitize(
-      searchParams.get("q") ?? "",
-      DOMPurifyConfig,
-    );
-    console.log(urlQuery);
+    const urlQuery = searchParams.get("q") ?? "";
+
     setQuery(urlQuery);
     setSearchResults(fuse.search(urlQuery));
   });
@@ -141,7 +134,9 @@ const FuseHighlight = <T extends ValidComponent = "div">(
   return (
     <Dynamic
       component={local.as || "div"}
-      innerHTML={DOMPurify.sanitize(result, DOMPurifyConfig)}
+      innerHTML={DOMPurify.sanitize(result, {
+        USE_PROFILES: { html: true, svg: true },
+      })}
       {...other}
     />
   );
