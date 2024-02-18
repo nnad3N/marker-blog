@@ -11,6 +11,7 @@ import {
 } from "solid-js";
 import Fuse, { type FuseResult, type FuseResultMatch } from "fuse.js";
 import { Dynamic } from "solid-js/web";
+import DOMPurify from "dompurify";
 
 type SearchItem = {
   slug: string;
@@ -25,6 +26,10 @@ interface Props {
   searchData: SearchItem[];
 }
 
+const DOMPurifyConfig = {
+  USE_PROFILES: { html: true, svg: true },
+};
+
 const Search: Component<Props> = ({ block, searchData }) => {
   const fuse = new Fuse(searchData, {
     keys: ["title", "description"],
@@ -38,8 +43,11 @@ const Search: Component<Props> = ({ block, searchData }) => {
 
   onMount(() => {
     const searchParams = new URLSearchParams(window.location.search);
-    const urlQuery = searchParams.get("q") ?? "";
-
+    const urlQuery = DOMPurify.sanitize(
+      searchParams.get("q") ?? "",
+      DOMPurifyConfig,
+    );
+    console.log(urlQuery);
     setQuery(urlQuery);
     setSearchResults(fuse.search(urlQuery));
   });
@@ -131,6 +139,10 @@ const FuseHighlight = <T extends ValidComponent = "div">(
   });
 
   return (
-    <Dynamic component={local.as || "div"} innerHTML={result} {...other} />
+    <Dynamic
+      component={local.as || "div"}
+      innerHTML={DOMPurify.sanitize(result, DOMPurifyConfig)}
+      {...other}
+    />
   );
 };
