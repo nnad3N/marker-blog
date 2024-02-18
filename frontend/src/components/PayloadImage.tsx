@@ -5,9 +5,14 @@ import type { Component } from "solid-js";
 interface Props {
   image: Media | string;
   squiggle?: boolean;
+  viewTransitionName: string;
 }
 
-const PayloadImage: Component<Props> = ({ image, squiggle }) => {
+const PayloadImage: Component<Props> = ({
+  image,
+  squiggle,
+  viewTransitionName,
+}) => {
   const isImage = typeof image !== "string";
 
   const sizes = isImage
@@ -24,6 +29,9 @@ const PayloadImage: Component<Props> = ({ image, squiggle }) => {
       srcset={srcset}
       sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, 1280px"
       alt={image.alt}
+      style={{
+        "view-transition-name": `image-${viewTransitionName}`,
+      }}
     />
   ) : (
     <div
