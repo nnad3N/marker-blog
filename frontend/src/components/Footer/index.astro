@@ -1,5 +1,5 @@
 ---
-import Social from "@/components/Footer/Social.astro";
+import SocialPlatform from "@/components/Footer/SocialPlatform";
 import type { Socials } from "@/types/payload";
 
 const today = new Date();
@@ -16,6 +16,10 @@ const { websiteTitle, socials } = Astro.props;
   &copy;{today.getFullYear()}
   {websiteTitle}
   <div class="flex gap-x-3">
-    {socials.map((social) => <Social social={social} />)}
+    {
+      socials.map((socialPlatform) => (
+        <SocialPlatform socialPlatform={socialPlatform} />
+      ))
+    }
   </div>
 </footer>

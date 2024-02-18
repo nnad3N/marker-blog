@@ -1,6 +1,6 @@
 ---
 import type { Post } from "payload/generated-types";
-import PayloadImage from "@/components/PayloadImage.astro";
+import PayloadImage from "@/components/PayloadImage";
 
 type Props = Post;
 
@@ -15,7 +15,7 @@ const { title, image, content_html } = Astro.props;
   </h1>
   <PayloadImage image={image} />
   <div
-    class="prose hover:prose-a:bg-yellow-200 prose-lg prose-img:mx-auto mx-auto py-4 lg:py-8"
+    class="hover:prose-a:bg-yellow-highlight prose prose-lg mx-auto py-4 prose-img:mx-auto lg:py-8"
     set:html={content_html}
   />
 </article>

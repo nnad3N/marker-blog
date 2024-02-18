@@ -1,0 +1,23 @@
+---
+import Search from "@/components/blocks/Search";
+import { payloadFetch } from "@/payload";
+import type { Block } from "@/types/payload";
+import type { Post } from "payload/generated-types";
+
+interface Props {
+  block: Block<"search">;
+}
+
+const { block } = Astro.props;
+
+const data = await payloadFetch<Post[]>("posts");
+
+const searchData =
+  data?.docs.map(({ slug, title, description }) => ({
+    slug,
+    title,
+    description,
+  })) ?? [];
+---
+
+<Search client:load block={block} searchData={searchData} />

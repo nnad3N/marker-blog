@@ -79,6 +79,13 @@ export interface Page {
         blockName?: string | null;
         blockType: 'displayPosts';
       }
+    | {
+        label: string;
+        placeholder?: string | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'search';
+      }
   )[];
   publishedAt: string;
   slug?: string | null;
@@ -93,6 +100,7 @@ export interface Page {
 export interface Post {
   id: string;
   title: string;
+  description: string;
   image: string | Media;
   content: {
     root: {

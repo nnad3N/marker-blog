@@ -26,6 +26,13 @@ const Posts: CollectionConfig = {
       name: "title",
       type: "text",
       required: true,
+      maxLength: 50,
+    },
+    {
+      name: "description",
+      type: "textarea",
+      required: true,
+      maxLength: 250,
     },
     {
       name: "image",

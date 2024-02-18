@@ -6,7 +6,7 @@ import { CallToAction } from "../blocks/CallToAction";
 import { FeaturedPosts } from "../blocks/FeaturedPosts";
 import { admin, adminOrEditor, adminOrEditorOrPublished } from "./Users/access";
 import { DisplayPosts } from "../blocks/DisplayPosts";
-import { publishedAtField } from "../fields/publishedAt";
+import { Search } from "../blocks/Search";
 
 const Pages: CollectionConfig = {
   slug: "pages",
@@ -35,9 +35,9 @@ const Pages: CollectionConfig = {
       name: "content",
       type: "blocks",
       required: true,
-      blocks: [Header, FeaturedPosts, CallToAction, DisplayPosts],
+      blocks: [Header, FeaturedPosts, CallToAction, DisplayPosts, Search],
     },
-    publishedAtField(),
+
     slugField(),
   ],
 };

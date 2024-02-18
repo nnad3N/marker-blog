@@ -1,9 +1,9 @@
 ---
 import type { Block } from "@/types/payload";
-import PostComponent from "@/components/Post.astro";
+import PostComponent from "@/components/Post";
 import PostsWrapper from "@/components/PostsWrapper.astro";
 import type { Post } from "payload/generated-types";
-import { payloadFetch } from "@/data/payload";
+import { payloadFetch } from "@/payload";
 
 interface Props {
   block: Block<"displayPosts">;

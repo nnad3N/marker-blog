@@ -12,6 +12,11 @@ export default {
       fontFamily: {
         sans: ["Atkinson", ...fontFamily.sans],
       },
+      colors: {
+        yellow: {
+          highlight: "#e9ff32",
+        },
+      },
     },
   },
   plugins: [typographyPlugin],
