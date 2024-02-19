@@ -11,11 +11,11 @@ const Post: Component<Props> = ({ post }) => {
   return (
     <a
       href={`/posts/${post.slug}`}
-      class="flex flex-1 basis-[26rem] flex-col overflow-hidden rounded-xl shadow-lg transition-all duration-100 hover:-translate-y-2 hover:shadow-xl"
+      class="flex flex-1 basis-[26rem] flex-col rounded-xl shadow-lg transition-all duration-100 hover:-translate-y-2 hover:shadow-xl"
     >
       <PayloadImage
+        class="squiggle rounded-t-xl"
         image={post.image}
-        squiggle={true}
         viewTransitionName={post.slug}
       />
       <div class="flex flex-1 flex-col justify-between gap-y-1.5 px-6 py-4">

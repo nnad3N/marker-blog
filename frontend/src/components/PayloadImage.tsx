@@ -4,13 +4,13 @@ import type { Component } from "solid-js";
 
 interface Props {
   image: Media | string;
-  squiggle?: boolean;
   viewTransitionName: string;
+  class?: string;
 }
 
 const PayloadImage: Component<Props> = ({
   image,
-  squiggle,
+  class: className = "",
   viewTransitionName,
 }) => {
   const isImage = typeof image !== "string";
@@ -24,7 +24,7 @@ const PayloadImage: Component<Props> = ({
 
   return isImage ? (
     <img
-      class={`aspect-[2/1] w-full object-cover ${squiggle ? "squiggle" : ""}`}
+      class={`aspect-[2/1] w-full object-cover ${className}`}
       src={MEDIA_URL + image.url}
       srcset={srcset}
       sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, 1280px"
@@ -34,9 +34,7 @@ const PayloadImage: Component<Props> = ({
       }}
     />
   ) : (
-    <div
-      class={`aspect-[2/1] w-full animate-pulse bg-gray-300 ${squiggle ? "squiggle" : ""}`}
-    />
+    <div class={`aspect-[2/1] w-full animate-pulse bg-gray-300 ${className}`} />
   );
 };
 
