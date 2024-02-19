@@ -5,7 +5,11 @@ export const payloadFetch = async <T>(
   endpoint: string,
 ): Promise<(T extends any[] ? PayloadResponse<T> : T) | undefined> => {
   try {
-    return fetch(`${CMS_URL}/api/${endpoint}`).then((res) => res.json());
+    const res = await fetch(`${CMS_URL}/api/${endpoint}`);
+
+    if (!res.ok) return undefined;
+
+    return res.json();
   } catch (error) {
     console.error(error);
     return undefined;
