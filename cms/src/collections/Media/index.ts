@@ -1,14 +1,18 @@
-import path from "path";
 import type { CollectionConfig } from "payload/types";
-import { anyone } from "./Users/access";
+import { anyone } from "../Users/access";
+import { beforeDeleteMedia } from "./hooks";
 
 const Media: CollectionConfig = {
   slug: "media",
   access: {
     read: anyone,
   },
+  hooks: {
+    beforeDelete: [beforeDeleteMedia],
+  },
   upload: {
-    staticDir: path.resolve(__dirname, "../../../media"),
+    crop: false,
+    focalPoint: false,
     staticURL: process.env.MEDIA_URL,
     imageSizes: [
       {

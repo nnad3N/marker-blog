@@ -10,5 +10,7 @@ export default defineConfig({
   site: "https://example.com",
   integrations: [sitemap(), tailwind(), solidJs()],
   output: "static",
-  adapter: aws(),
+  adapter: aws({
+    deploymentStrategy: "static",
+  }),
 });

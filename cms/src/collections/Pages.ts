@@ -22,7 +22,7 @@ const Pages: CollectionConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 5,
+    maxPerDoc: 1,
   },
   fields: [
     {

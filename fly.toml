@@ -7,6 +7,7 @@ app = 'marker-blog-cms'
 primary_region = 'waw'
 
 [build]
+dockerfile = "cms/Dockerfile"
 
 [http_service]
   internal_port = 3000

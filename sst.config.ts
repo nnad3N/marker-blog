@@ -10,7 +10,7 @@ export default {
   },
   stacks(app) {
     app.stack(({ stack }: StackContext) => {
-      const site = new AstroSite(stack, "website", {
+      const site = new AstroSite(stack, "frontend", {
         path: "frontend/",
       });
 

@@ -19,7 +19,7 @@ const Posts: CollectionConfig = {
   },
   versions: {
     drafts: true,
-    maxPerDoc: 10,
+    maxPerDoc: 1,
   },
   fields: [
     {

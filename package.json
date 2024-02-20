@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "sst dev",
     "build": "sst build",
-    "deploy": "sst deploy",
+    "deploy:frontend": "sst deploy",
+    "deploy:cms": "fly deploy",
     "remove": "sst remove",
     "console": "sst console",
     "typecheck": "tsc --noEmit"
@@ -19,6 +20,7 @@
     "@tsconfig/node18": "^18.2.2"
   },
   "workspaces": [
-    "packages/*"
+    "cms",
+    "frontend"
   ]
 }
