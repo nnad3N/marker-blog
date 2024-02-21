@@ -7,7 +7,6 @@
     "dev": "sst dev",
     "build": "sst build",
     "deploy:frontend": "sst deploy --prod",
-    "deploy:cms": "fly deploy",
     "remove": "sst remove",
     "console": "sst console",
     "typecheck": "tsc --noEmit"
