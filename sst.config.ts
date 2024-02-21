@@ -12,6 +12,14 @@ export default {
     app.stack(({ stack }: StackContext) => {
       const site = new AstroSite(stack, "frontend", {
         path: "frontend/",
+        assets: {
+          fileOptions: [
+            {
+              files: "**",
+              cacheControl: "max-age=31536000,public,immutable",
+            },
+          ],
+        },
       });
 
       stack.addOutputs({

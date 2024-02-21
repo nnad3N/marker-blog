@@ -6,7 +6,7 @@ const format = (val: string): string =>
     .replace(/[^\w-]+/g, "")
     .toLowerCase();
 
-const formatSlug =
+export const formatSlug =
   (fallback: string): FieldHook =>
   ({ operation, value, originalDoc, data }) => {
     if (typeof value === "string") {
@@ -24,4 +24,10 @@ const formatSlug =
     return value;
   };
 
-export default formatSlug;
+export const populatePublishedAt: FieldHook = ({ value }) => {
+  if (!value) {
+    return new Date();
+  }
+
+  return value;
+};

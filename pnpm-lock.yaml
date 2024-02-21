@@ -1158,7 +1158,6 @@ packages:
   /@aws-sdk/client-sso-oidc@3.515.0(@aws-sdk/credential-provider-node@3.515.0):
     resolution: {integrity: sha512-zACa8LNlPUdlNUBqQRf5a3MfouLNtcBfm84v2c8M976DwJrMGONPe1QjyLLsD38uESQiXiVQRruj/b000iMXNw==}
     engines: {node: '>=14.0.0'}
-    requiresBuild: true
     peerDependencies:
       '@aws-sdk/credential-provider-node': ^3.515.0
     dependencies:
@@ -1481,7 +1480,6 @@ packages:
   /@aws-sdk/credential-provider-ini@3.515.0(@aws-sdk/credential-provider-node@3.515.0):
     resolution: {integrity: sha512-ouDlNZdv2TKeVEA/YZk2+XklTXyAAGdbWnl4IgN9ItaodWI+lZjdIoNC8BAooVH+atIV/cZgoGTGQL7j2TxJ9A==}
     engines: {node: '>=14.0.0'}
-    requiresBuild: true
     dependencies:
       '@aws-sdk/client-sts': 3.515.0(@aws-sdk/credential-provider-node@3.515.0)
       '@aws-sdk/credential-provider-env': 3.515.0
@@ -1522,7 +1520,6 @@ packages:
   /@aws-sdk/credential-provider-node@3.515.0:
     resolution: {integrity: sha512-Y4kHSpbxksiCZZNcvsiKUd8Fb2XlyUuONEwqWFNL82ZH6TCCjBGS31wJQCSxBHqYcOL3tiORUEJkoO7uS30uQA==}
     engines: {node: '>=14.0.0'}
-    requiresBuild: true
     dependencies:
       '@aws-sdk/credential-provider-env': 3.515.0
       '@aws-sdk/credential-provider-http': 3.515.0
@@ -1574,7 +1571,6 @@ packages:
   /@aws-sdk/credential-provider-sso@3.515.0(@aws-sdk/credential-provider-node@3.515.0):
     resolution: {integrity: sha512-j7vUkiSmuhpBvZYoPTRTI4ePnQbiZMFl6TNhg9b9DprC1zHkucsZnhRhqjOVlrw/H6J4jmcPGcHHTZ5WQNI5xQ==}
     engines: {node: '>=14.0.0'}
-    requiresBuild: true
     dependencies:
       '@aws-sdk/client-sso': 3.515.0(aws-crt@1.21.1)
       '@aws-sdk/token-providers': 3.515.0(@aws-sdk/credential-provider-node@3.515.0)
@@ -1607,7 +1603,6 @@ packages:
   /@aws-sdk/credential-provider-web-identity@3.515.0(@aws-sdk/credential-provider-node@3.515.0):
     resolution: {integrity: sha512-66+2g4z3fWwdoGReY8aUHvm6JrKZMTRxjuizljVmMyOBttKPeBYXvUTop/g3ZGUx1f8j+C5qsGK52viYBvtjuQ==}
     engines: {node: '>=14.0.0'}
-    requiresBuild: true
     dependencies:
       '@aws-sdk/client-sts': 3.515.0(@aws-sdk/credential-provider-node@3.515.0)
       '@aws-sdk/types': 3.515.0
@@ -1881,7 +1876,6 @@ packages:
   /@aws-sdk/token-providers@3.515.0(@aws-sdk/credential-provider-node@3.515.0):
     resolution: {integrity: sha512-MQuf04rIcTXqwDzmyHSpFPF1fKEzRl64oXtCRUF3ddxTdK6wxXkePfK6wNCuL+GEbEcJAoCtIGIRpzGPJvQjHA==}
     engines: {node: '>=14.0.0'}
-    requiresBuild: true
     dependencies:
       '@aws-sdk/client-sso-oidc': 3.515.0(@aws-sdk/credential-provider-node@3.515.0)
       '@aws-sdk/types': 3.515.0

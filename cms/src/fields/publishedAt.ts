@@ -1,7 +1,7 @@
 import type { Field } from "payload/types";
 
 import deepMerge from "../utilities/deepMerge";
-import { populatePublishedAt } from "./hooks/populatePublishedAt";
+import { populatePublishedAt } from "./hooks";
 
 type PublishedAt = (overrides?: Partial<Field>) => Field;
 

@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload/types";
 import { anyone } from "../Users/access";
-import { beforeDeleteMedia } from "./hooks";
+import { safeguardDelete, rebuildPage } from "./hooks";
 
 const Media: CollectionConfig = {
   slug: "media",
@@ -8,7 +8,8 @@ const Media: CollectionConfig = {
     read: anyone,
   },
   hooks: {
-    beforeDelete: [beforeDeleteMedia],
+    beforeDelete: [safeguardDelete],
+    afterChange: [rebuildPage],
   },
   upload: {
     crop: false,
