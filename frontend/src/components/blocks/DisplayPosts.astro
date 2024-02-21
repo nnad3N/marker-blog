@@ -21,9 +21,9 @@ const data = await payloadFetch<Post[]>(
 <PostsWrapper>
   {
     // It's easier to make typescript work this way
-    data?.docs.map((post) => {
+    data?.docs.map((post, index) => {
       if (typeof post === "string") return null;
-      return <PostComponent post={post} />;
+      return <PostComponent post={post} lazy={index > 4} />;
     })
   }
 </PostsWrapper>

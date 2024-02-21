@@ -5,9 +5,10 @@ import type { Component } from "solid-js";
 
 interface Props {
   post: Exclude<Block<"featuredPosts">["featuredPosts"][number], string>;
+  lazy?: boolean;
 }
 
-const Post: Component<Props> = ({ post }) => {
+const Post: Component<Props> = ({ post, lazy }) => {
   return (
     <a
       href={`/posts/${post.slug}`}
@@ -17,6 +18,7 @@ const Post: Component<Props> = ({ post }) => {
         class="squiggle rounded-t-xl"
         image={post.image}
         viewTransitionName={post.slug}
+        lazy={lazy}
       />
       <div class="flex flex-1 flex-col justify-between gap-y-1.5 px-6 py-4">
         <h3 class="text-lg font-bold md:text-xl">{post.title}</h3>

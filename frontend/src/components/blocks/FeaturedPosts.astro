@@ -15,7 +15,7 @@ const { block } = Astro.props;
     // It's easier to make typescript work this way
     block.featuredPosts.map((post) => {
       if (typeof post === "string") return null;
-      return <Post post={post} />;
+      return <Post post={post} lazy={false} />;
     })
   }
 </PostsWrapper>

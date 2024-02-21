@@ -13,7 +13,7 @@ const { slug, title, image, content_html } = Astro.props;
   >
     {title}
   </h1>
-  <PayloadImage image={image} viewTransitionName={slug} />
+  <PayloadImage image={image} viewTransitionName={slug} lazy={false} />
   <div
     class="prose prose-lg mx-auto py-4 hover:prose-a:bg-yellow-highlight prose-img:mx-auto lg:py-8"
     set:html={content_html}

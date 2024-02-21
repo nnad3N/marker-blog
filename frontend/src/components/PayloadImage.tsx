@@ -6,12 +6,14 @@ interface Props {
   image: Media | string;
   viewTransitionName: string;
   class?: string;
+  lazy?: boolean;
 }
 
 const PayloadImage: Component<Props> = ({
   image,
   class: className = "",
   viewTransitionName,
+  lazy = true,
 }) => {
   const isImage = typeof image !== "string";
 
@@ -32,6 +34,7 @@ const PayloadImage: Component<Props> = ({
       style={{
         "view-transition-name": `image-${viewTransitionName}`,
       }}
+      loading={lazy ? "lazy" : "eager"}
     />
   ) : (
     <div class={`aspect-[2/1] w-full animate-pulse bg-gray-300 ${className}`} />
