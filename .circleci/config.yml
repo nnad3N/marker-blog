@@ -5,7 +5,6 @@ jobs:
     docker:
       - image: cimg/node:lts
     resource_class: small
-    working_directory: /frontend
 
     steps:
       - checkout
@@ -16,10 +15,14 @@ jobs:
             corepack prepare pnpm@latest --activate
       - run:
           name: Install dependencies
-          command: pnpm install
+          command: |
+            cd frontend
+            pnpm install
       - run:
           name: Deploy with SST
-          command: pnpm deploy
+          command: |
+            cd frontend
+            pnpm deploy
 
 workflows:
   deploy:
