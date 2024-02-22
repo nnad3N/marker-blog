@@ -13,13 +13,12 @@ jobs:
           command: |
             sudo corepack enable
             corepack prepare pnpm@latest --activate
-            pnpm config set store-dir .pnpm-store
       - run:
           name: Install dependencies
           command: pnpm install
       - run:
           name: Deploy with SST
-          command: pnpm deploy:frontend
+          command: pnpm deploy
 
 workflows:
   deploy:

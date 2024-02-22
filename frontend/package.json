@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "sst deploy --prod --stage nnad3n"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.2",
@@ -18,9 +19,12 @@
     "@fontsource-variable/anybody": "^5.0.19",
     "astro": "^4.3.5",
     "astro-sst": "^2.40.3",
+    "aws-cdk-lib": "2.124.0",
+    "constructs": "10.3.0",
     "dompurify": "^3.0.8",
     "fuse.js": "^7.0.0",
     "solid-js": "^1.8.15",
+    "sst": "^2.40.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3"
   },

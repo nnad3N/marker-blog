@@ -1,4 +1,4 @@
-import { SSTConfig } from "sst";
+import { type SSTConfig } from "sst";
 import { AstroSite, type StackContext } from "sst/constructs";
 
 export default {
@@ -11,7 +11,6 @@ export default {
   stacks(app) {
     app.stack(({ stack }: StackContext) => {
       const site = new AstroSite(stack, "frontend", {
-        path: "frontend/",
         assets: {
           fileOptions: [
             {
