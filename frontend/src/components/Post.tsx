@@ -12,7 +12,7 @@ const Post: Component<Props> = ({ post, lazy }) => {
   return (
     <a
       href={`/posts/${post.slug}`}
-      class="flex flex-1 basis-[26rem] flex-col rounded-xl shadow-lg transition-all duration-100 hover:-translate-y-2 hover:shadow-xl"
+      class="flex max-w-screen-xl flex-1 basis-[26rem] flex-col rounded-xl shadow-lg transition-all duration-100 hover:-translate-y-2 hover:shadow-xl"
     >
       <PayloadImage
         class="squiggle rounded-t-xl"

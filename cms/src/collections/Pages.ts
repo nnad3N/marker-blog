@@ -7,6 +7,7 @@ import { FeaturedPosts } from "../blocks/FeaturedPosts";
 import { admin, adminOrEditor, adminOrEditorOrPublished } from "./Users/access";
 import { DisplayPosts } from "../blocks/DisplayPosts";
 import { Search } from "../blocks/Search";
+import { redeployPage } from "../hooks";
 
 const Pages: CollectionConfig = {
   slug: "pages",
@@ -19,6 +20,9 @@ const Pages: CollectionConfig = {
     update: adminOrEditor,
     create: admin,
     delete: admin,
+  },
+  hooks: {
+    afterChange: [redeployPage],
   },
   versions: {
     drafts: true,

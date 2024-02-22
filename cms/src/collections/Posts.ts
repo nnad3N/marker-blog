@@ -4,6 +4,7 @@ import { slugField } from "../fields/slug";
 import { adminOrEditor, adminOrEditorOrPublished } from "./Users/access";
 import { publishedAtField } from "../fields/publishedAt";
 import { lexicalHTML } from "@payloadcms/richtext-lexical";
+import { redeployPage } from "../hooks";
 
 const Posts: CollectionConfig = {
   slug: "posts",
@@ -16,6 +17,9 @@ const Posts: CollectionConfig = {
     update: adminOrEditor,
     create: adminOrEditor,
     delete: adminOrEditor,
+  },
+  hooks: {
+    afterChange: [redeployPage],
   },
   versions: {
     drafts: true,

@@ -1,6 +1,7 @@
-import { BeforeDeleteHook, AfterChangeHook } from "payload/dist/collections/config/types";
+import { CollectionAfterChangeHook, CollectionBeforeDeleteHook } from "payload/types";
 import { Media, Post } from "payload/generated-types";
 import { createHash } from "crypto";
+import { invokeRedeployWebhook } from "../../hooks";
 
 const checkIfHasMedia = ({ mediaId, doc }: { mediaId: string; doc: Post }) => {
   const imageId = typeof doc.image !== "string" ? doc.image.id : doc.image;
@@ -13,7 +14,7 @@ const checkIfHasMedia = ({ mediaId, doc }: { mediaId: string; doc: Post }) => {
   }
 };
 
-export const safeguardDelete: BeforeDeleteHook = async ({ req, id }) => {
+export const safeguardDelete: CollectionBeforeDeleteHook = async ({ req, id }) => {
   const mediaId = String(id);
 
   const [versions, posts] = await Promise.all([
@@ -34,11 +35,11 @@ const getHash = (doc: Media) => {
   return createHash("sha256").update(JSON.stringify(copy)).digest("hex");
 };
 
-export const rebuildPage: AfterChangeHook<Media> = async ({ doc, previousDoc }) => {
+export const rebuildPage: CollectionAfterChangeHook<Media> = async ({ doc, previousDoc }) => {
   const hash = getHash(doc);
   const prevHash = getHash(previousDoc);
 
   if (hash === prevHash) return;
 
-  // rebuild
+  await invokeRedeployWebhook();
 };

@@ -87,7 +87,6 @@ export interface Page {
         blockType: 'search';
       }
   )[];
-  publishedAt: string;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -131,6 +130,7 @@ export interface Post {
 export interface Media {
   id: string;
   alt: string;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -215,6 +215,7 @@ export interface Setting {
         id?: string | null;
       }[]
     | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

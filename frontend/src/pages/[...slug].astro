@@ -11,19 +11,22 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   if (!data) return [];
 
-  return data.docs.map(({ slug, content }) => ({
-    params: { slug: slug || undefined },
-    props: { content },
+  return data.docs.map((page) => ({
+    params: { slug: page.slug || undefined },
+    props: { page },
   }));
 };
 
 type Props = {
-  content: Page["content"];
+  page: Page;
 };
 
-const { content } = Astro.props;
+const { page } = Astro.props;
+
+// Homepage should use the global title
+const title = page.slug ? page.title : undefined;
 ---
 
-<Layout class="py-12 lg:py-24">
-  <DynamicBlocks blocks={content} />
+<Layout title={title} class="py-12 lg:py-24">
+  <DynamicBlocks blocks={page.content} />
 </Layout>
