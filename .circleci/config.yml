@@ -15,7 +15,9 @@ jobs:
             corepack prepare pnpm@latest --activate
       - run:
           name: Install dependencies
-          command: pnpm install
+          command: |
+            cd frontend
+            pnpm install
       - run:
           name: Deploy with SST
           command: pnpm deploy
