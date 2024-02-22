@@ -1,15 +1,10 @@
 import type { CollectionConfig } from "payload/types";
-import { anyone } from "../Users/access";
-import { safeguardDelete, rebuildPage } from "./hooks";
+import { anyone } from "./Users/access";
 
 const Media: CollectionConfig = {
   slug: "media",
   access: {
     read: anyone,
-  },
-  hooks: {
-    beforeDelete: [safeguardDelete],
-    afterChange: [rebuildPage],
   },
   upload: {
     crop: false,

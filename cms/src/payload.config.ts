@@ -10,13 +10,25 @@ import Pages from "./collections/Pages";
 import Posts from "./collections/Posts";
 import Media from "./collections/Media";
 import Settings from "./globals/settings";
+import RedeployButton from "./custom/RedeployButton";
+import RedeployHandler from "./custom/redeployHandler";
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
-    css: path.resolve(__dirname, "./styles/overrides.scss"),
+    css: path.resolve(__dirname, "./custom/overrides.scss"),
+    components: {
+      actions: [RedeployButton],
+    },
   },
+  endpoints: [
+    {
+      path: "/redeploy",
+      method: "post",
+      handler: RedeployHandler,
+    },
+  ],
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [...defaultFeatures, HTMLConverterFeature({})],
   }),

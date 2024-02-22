@@ -11,16 +11,4 @@ export const editor: isUser = ({ req: { user } }) => checkRole(["editor"], user)
 
 export const adminOrEditor: isUser = ({ req: { user } }) => checkRole(["admin", "editor"], user);
 
-export const adminOrEditorOrPublished: Access = (args) => {
-  if (args.req.user && adminOrEditor(args)) {
-    return true;
-  }
-
-  return {
-    _status: {
-      equals: "published",
-    },
-  };
-};
-
 export const anyone: Access = () => true;

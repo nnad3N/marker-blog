@@ -4,10 +4,9 @@ import { slugField } from "../fields/slug";
 import { Header } from "../blocks/Header";
 import { CallToAction } from "../blocks/CallToAction";
 import { FeaturedPosts } from "../blocks/FeaturedPosts";
-import { admin, adminOrEditor, adminOrEditorOrPublished } from "./Users/access";
+import { anyone, admin, adminOrEditor } from "./Users/access";
 import { DisplayPosts } from "../blocks/DisplayPosts";
 import { Search } from "../blocks/Search";
-import { redeployPage } from "../hooks";
 
 const Pages: CollectionConfig = {
   slug: "pages",
@@ -16,17 +15,10 @@ const Pages: CollectionConfig = {
     defaultColumns: ["title", "slug", "updatedAt"],
   },
   access: {
-    read: adminOrEditorOrPublished,
+    read: anyone,
     update: adminOrEditor,
     create: admin,
     delete: admin,
-  },
-  hooks: {
-    afterChange: [redeployPage],
-  },
-  versions: {
-    drafts: true,
-    maxPerDoc: 1,
   },
   fields: [
     {
@@ -34,14 +26,12 @@ const Pages: CollectionConfig = {
       type: "text",
       required: true,
     },
-
     {
       name: "content",
       type: "blocks",
       required: true,
       blocks: [Header, FeaturedPosts, CallToAction, DisplayPosts, Search],
     },
-
     slugField(),
   ],
 };

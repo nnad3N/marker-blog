@@ -1,24 +1,11 @@
 import type { GlobalConfig } from "payload/types";
 import { adminOrEditor, anyone } from "../collections/Users/access";
-import { invokeRedeployWebhook } from "../hooks";
 
 const Settings: GlobalConfig = {
   slug: "settings",
   access: {
     read: anyone,
     update: adminOrEditor,
-  },
-  hooks: {
-    afterChange: [
-      async ({ doc }) => {
-        if (doc._status === "draft") return;
-        await invokeRedeployWebhook();
-      },
-    ],
-  },
-  versions: {
-    drafts: true,
-    max: 1,
   },
   fields: [
     {
