@@ -8,7 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "sst deploy --prod --stage nnad3n"
+    "sst:deploy": "sst deploy --prod --stage nnad3n"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.2",

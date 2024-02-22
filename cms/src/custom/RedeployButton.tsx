@@ -10,17 +10,15 @@ const RedeployButton = () => {
 
     setIsLoading(true);
 
-    toast.success("Test.");
+    const res = await fetch("/api/redeploy", {
+      method: "POST",
+    });
 
-    // const res = await fetch("/api/redeploy", {
-    //   method: "POST",
-    // });
-
-    // if (!res.ok || res.status !== 200) {
-    //   toast.error("Failed to start redeploying the website.");
-    // } else {
-    //   toast.success("Started redeploying the website.");
-    // }
+    if (!res.ok || res.status !== 200) {
+      toast.error("Failed to start redeploying the website.");
+    } else {
+      toast.success("Started redeploying the website.");
+    }
 
     setIsLoading(false);
   };

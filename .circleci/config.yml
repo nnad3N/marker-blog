@@ -22,7 +22,7 @@ jobs:
           name: Deploy with SST
           command: |
             cd frontend
-            pnpm deploy
+            pnpm sst:deploy
 
 workflows:
   deploy:
