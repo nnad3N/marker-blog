@@ -4,6 +4,7 @@ jobs:
   deploy-to-aws:
     docker:
       - image: cimg/node:lts
+    resource_class: small
 
     steps:
       - checkout
