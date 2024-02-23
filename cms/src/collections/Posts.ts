@@ -4,6 +4,7 @@ import { slugField } from "../fields/slug";
 import { anyone, adminOrEditor } from "./Users/access";
 import { publishedAtField } from "../fields/publishedAt";
 import { lexicalHTML } from "@payloadcms/richtext-lexical";
+import { pageTypeField } from "../fields/pageType";
 
 const Posts: CollectionConfig = {
   slug: "posts",
@@ -43,9 +44,8 @@ const Posts: CollectionConfig = {
     },
     lexicalHTML("content", { name: "content_html" }),
     publishedAtField(),
-    slugField(undefined, {
-      required: true,
-    }),
+    slugField(),
+    pageTypeField("post"),
   ],
 };
 

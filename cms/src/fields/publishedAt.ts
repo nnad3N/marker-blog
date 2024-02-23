@@ -10,7 +10,6 @@ export const publishedAtField: PublishedAt = (overrides = {}) =>
     {
       name: "publishedAt",
       type: "date",
-      required: true,
       admin: {
         position: "sidebar",
         date: {

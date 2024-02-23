@@ -7,6 +7,7 @@ import { FeaturedPosts } from "../blocks/FeaturedPosts";
 import { anyone, admin, adminOrEditor } from "./Users/access";
 import { DisplayPosts } from "../blocks/DisplayPosts";
 import { Search } from "../blocks/Search";
+import { pageTypeField } from "../fields/pageType";
 
 const Pages: CollectionConfig = {
   slug: "pages",
@@ -32,7 +33,13 @@ const Pages: CollectionConfig = {
       required: true,
       blocks: [Header, FeaturedPosts, CallToAction, DisplayPosts, Search],
     },
-    slugField(),
+    slugField(undefined, {
+      access: {
+        create: admin,
+        update: admin,
+      },
+    }),
+    pageTypeField("page"),
   ],
 };
 

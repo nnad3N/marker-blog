@@ -88,6 +88,7 @@ export interface Page {
       }
   )[];
   slug?: string | null;
+  pageType: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -116,8 +117,9 @@ export interface Post {
     [k: string]: unknown;
   };
   content_html?: string | null;
-  publishedAt: string;
-  slug: string;
+  publishedAt?: string | null;
+  slug?: string | null;
+  pageType: string;
   updatedAt: string;
   createdAt: string;
 }
