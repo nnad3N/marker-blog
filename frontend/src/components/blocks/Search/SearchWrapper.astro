@@ -13,8 +13,8 @@ const { block } = Astro.props;
 const data = await payloadFetch<Post[]>("posts");
 
 const searchData =
-  data?.docs.map(({ slug, title, description }) => ({
-    slug,
+  data?.docs.map(({ id, slug, title, description }) => ({
+    slug: slug ?? id,
     title,
     description,
   })) ?? [];

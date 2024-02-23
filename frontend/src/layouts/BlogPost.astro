@@ -4,7 +4,7 @@ import PayloadImage from "@/components/PayloadImage";
 
 type Props = Post;
 
-const { slug, title, image, content_html } = Astro.props;
+const { id, slug, title, image, content_html } = Astro.props;
 ---
 
 <article class="mx-auto w-full max-w-3xl">
@@ -13,7 +13,7 @@ const { slug, title, image, content_html } = Astro.props;
   >
     {title}
   </h1>
-  <PayloadImage image={image} viewTransitionName={slug} lazy={false} />
+  <PayloadImage image={image} viewTransitionName={slug ?? id} lazy={false} />
   <div
     class="prose prose-lg mx-auto py-4 hover:prose-a:bg-yellow-highlight prose-img:mx-auto lg:py-8"
     set:html={content_html}

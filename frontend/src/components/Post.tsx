@@ -17,14 +17,14 @@ const Post: Component<Props> = ({ post, lazy }) => {
       <PayloadImage
         class="squiggle rounded-t-xl"
         image={post.image}
-        viewTransitionName={post.slug}
+        viewTransitionName={post.slug ?? post.id}
         lazy={lazy}
       />
       <div class="flex flex-1 flex-col justify-between gap-y-1.5 px-6 py-4">
         <h3 class="text-lg font-bold md:text-xl">{post.title}</h3>
         <FormattedDate
           class="mt-auto text-sm"
-          date={new Date(post.publishedAt)}
+          date={post.publishedAt ? new Date(post.publishedAt) : new Date()}
         />
       </div>
     </a>

@@ -8,10 +8,10 @@ const { websiteTitle } = Astro.props;
 
 <header class="relative px-5 lg:px-8 2xl:px-0">
   <nav class="mx-auto flex h-14 max-w-7xl items-center justify-between">
-    <a class="hover:bg-yellow-highlight font-bold md:text-lg" href="/"
+    <a class="font-bold hover:bg-yellow-highlight md:text-lg" href="/"
       >{websiteTitle}</a
     >
-    <a class="hover:bg-yellow-highlight" href="/search">
+    <a aria-label="Wyszukaj" class="hover:bg-yellow-highlight" href="/search">
       <svg
         class="h-5 w-5 md:h-6 md:w-6"
         xmlns="http://www.w3.org/2000/svg"

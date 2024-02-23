@@ -29,7 +29,7 @@ const PayloadImage: Component<Props> = ({
       class={`aspect-[2/1] w-full object-cover ${className}`}
       src={MEDIA_URL + image.url}
       srcset={srcset}
-      sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, 1280px"
+      sizes="(max-width: 640px) 640px, (max-width: 768px) 768px, (min-width: 1536px) and (max-width: 1920px) 640px, 1280px"
       alt={image.alt}
       style={{
         "view-transition-name": `image-${viewTransitionName}`,
